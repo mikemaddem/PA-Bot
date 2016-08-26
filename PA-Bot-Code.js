@@ -6,7 +6,7 @@
 	Please visit www.paesports.com with any errors or problems with this bot.
 	
 	Todo 
-	-Make a command  that allows Admins to see how many times a command has been used.
+	-Make the command-count only available to certain ranks.
 	
 	
 	Changelog 
@@ -14,6 +14,7 @@
 	[ADDED] AFK Mode - People type AFK, and are moved to the channel
 	[ADDED] Improved Console Logging
 	[ADDED] a beta version of a support system.
+	[ADDED] command-count Will count all the commands used.
 	
  	
 */
