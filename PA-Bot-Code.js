@@ -1,6 +1,6 @@
 /*
     Perfect Alliance eSports Custom Discord  Bot
-	Version 0.0.8A
+	Version 0.0.9
 	Coded with love and memes by: Mike Madden
 	
 	Please visit www.paesports.com with any errors or problems with this bot.
@@ -15,6 +15,7 @@
 	[ADDED] Improved Console Logging
 	[ADDED] a beta version of a support system.
 	[ADDED] command-count Will count all the commands used.
+	[ADDED] If you use a specific support command before you ask for help, a message will prompt you with further instructions. 
 	
  	
 */
@@ -36,7 +37,7 @@ var askHelp = false;
 
 //when the bot is ready
 bot.on("ready", () => {
-    console.log(`The PA  Bot  has loaded. Awesome!`);
+    console.log(`The PA  Bot  has loaded. Awesome sauce m8!`);
 	console.log(`Ready to begin! Serving in ${bot.channels.length} servers`);
 	bot.setStatus("online", "www.paesports.com");
 	});
@@ -123,7 +124,10 @@ bot.on("message", msg => {
 		askHelp=false;
 		totalCommands++;
     }
-	
+	else if (msg.content.startsWith("match report") && askHelp == false){
+		bot.sendMessage(msg, "Please type the help command first to ensure you are recieving the help you requested.")
+		console.log(msg.author + "  Has tried to use a support command without typing help first. - match report command")
+	}
 	if (msg.content.startsWith("account issue") && askHelp == true){
 
     	bot.sendMessage(msg, "Darn! As of right now, I'm not smart enough to help you. :sob: " +msg.author);
@@ -133,6 +137,10 @@ bot.on("message", msg => {
 		askHelp=false;
 		totalCommands++;
     }
+	else if (msg.content.startsWith("account issue") && askHelp == false){
+		bot.sendMessage(msg, "Please type the help command first to ensure you are recieving the help you requested.")
+		console.log(msg.author + "  Has tried to use a support command without typing help first. - account issue command")
+	}
 	if (msg.content.startsWith("vip") && askHelp == true){
 
     	bot.sendMessage(msg, "Darn! As of right now, I'm not smart enough to help you. " +msg.author);
