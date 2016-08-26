@@ -1,6 +1,6 @@
 /*
     Perfect Alliance eSports Custom Discord  Bot
-	Version 0.0.6
+	Version 0.0.8A
 	Coded with love and memes by: Mike Madden
 	
 	Please visit www.paesports.com with any errors or problems with this bot.
@@ -122,7 +122,6 @@ bot.on("message", msg => {
     	console.log(msg.author.username + "  tried to report a match.");
 		askHelp=false;
 		totalCommands++;
-		
     }
 	
 	if (msg.content.startsWith("account issue") && askHelp == true){
@@ -143,6 +142,10 @@ bot.on("message", msg => {
 		askHelp=false;
 		totalCommands++;
     }
+	else if (msg.content.startsWith("vip") && askHelp == false){
+		bot.sendMessage(msg, "Please type the help command first to ensure you are recieving the help you requested.")
+		console.log(msg.author + "  Has tried to use a support command without typing help first.")
+	}
 	if (msg.content.startsWith("other") && askHelp == true){
 
     	bot.sendMessage(msg, "Here are some other commands that you can use 'memes' 'csgo' 'events' 'forum' 'twitter' 'facebook 'twitch' 'sponsors' 'murica' " +msg.author);
@@ -187,7 +190,21 @@ bot.on("message", msg => {
     	console.log(msg.author.username + " Has used the twitter command. ");
 		totalCommands++;
 		}
-	
+	if (msg.content.startsWith("facebook")){
+    	bot.sendMessage(msg, "There is nothing here right now " +msg.author);
+    	console.log(msg.author.username + " Has used the facebook command. ");
+		totalCommands++;
+		}
+		if (msg.content.startsWith("twitch")){
+    	bot.sendMessage(msg, "Our twitter is www.twitch.tv/pa_organization " +msg.author);
+    	console.log(msg.author.username + " Has used the twitch command. ");
+		totalCommands++;
+		}
+		if (msg.content.startsWith("sponsors")){
+    	bot.sendMessage(msg, "Thanks to all our sponsors, I have no idea who you are." +msg.author);
+    	console.log(msg.author.username + " Has used the sponsors command. ");
+		totalCommands++;
+		}
 	if (msg.content.startsWith("command-count")){
 		bot.sendMessage(msg, "The total amount of commands used is..." +totalCommands);
 		
