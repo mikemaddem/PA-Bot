@@ -25,6 +25,10 @@ var AuthDetails = require("./auth.json");
 
 var bot = new Discord.Client();
 
+var totalCommands;
+
+totalCommands=0;
+
 var askHelp = false;
 
 //var adminrole = msg.server.roles.get("name", "Admin");
@@ -108,7 +112,7 @@ bot.on("message", msg => {
 	
     	// Log it in the console
     	console.log(msg.author.username + " Has said that they need help");
-		
+		totalCommands++;
     }
 	if (msg.content.startsWith("match report") && askHelp == true){
 
@@ -116,6 +120,7 @@ bot.on("message", msg => {
     	// Log it in the console
     	console.log(msg.author.username + "  tried to report a match.");
 		askHelp=false;
+		totalCommands++;
 		
     }
 	
@@ -126,7 +131,7 @@ bot.on("message", msg => {
     	// Log it in the console
     	console.log(msg.author.username + "  Has an account issue");
 		askHelp=false;
-		
+		totalCommands++;
     }
 	if (msg.content.startsWith("vip") && askHelp == true){
 
@@ -135,6 +140,7 @@ bot.on("message", msg => {
     	// Log it in the console
     	console.log(msg.author.username + "  Has tried to do something with VIP");
 		askHelp=false;
+		totalCommands++;
     }
 	if (msg.content.startsWith("other") && askHelp == true){
 
@@ -143,37 +149,48 @@ bot.on("message", msg => {
     	// Log it in the console
     	console.log(msg.author.username + "  Has used  the other command");
 		askHelp=false;
+		totalCommands++;
     }
 	if (msg.content.startsWith("memes")){
     	bot.sendMessage(msg, " :warning: Memes too strong for me :warning: :punch: " +msg.author);
     	console.log(msg.author.username + "  Has dank memes");
-    }
+		totalCommands++;
+	}
 	if (msg.content.startsWith("murica")){
     	bot.sendMessage(msg, " :flag_us:  :flag_us:  :flag_us:  :flag_us: :flag_us::flag_us::flag_us::flag_us::flag_us::flag_us::flag_us::flag_us: :flag_us: :flag_us::flag_us::flag_us::flag_us::flag_us::flag_us::flag_us::flag_us::flag_us::flag_us::flag_us::flag_us::flag_us: " +msg.author);
     	console.log(msg.author.username + "  Has used the Murica command");
-    }
+		totalCommands++;
+	}
 	if (msg.content.startsWith("canada")){
 		bot.sendMessage(msg, "Whoops, looks like I forgot the Canadians, EH?")
 		console.log(msg.author.username +" Is a canadaian.")
-	}
+		totalCommands++;
+		}
 	if (msg.content.startsWith("csgo")){
     	bot.sendMessage(msg, " :warning: CS:GO events are currently on-hold /n We are however working on something awesome for the CS scene ready around early October /n :sunglasses: " +msg.author);
     	console.log(msg.author.username + "  Has used the CS:GO command");
-    }
+		totalCommands++;
+		}
 	if (msg.content.startsWith("events")){
     	bot.sendMessage(msg, "You may find all current, and past events on our website at www.paesports.com" +msg.author);
     	console.log(msg.author.username + "  Has used the event command");
-    }
+		totalCommands++;
+		}
 	if (msg.content.startsWith("forum")){
     	bot.sendMessage(msg, "Our forums are located at forum.paesports.com /n Make sure you create an account, join in on the discussion, and even check out our recruitment board." +msg.author);
     	console.log(msg.author.username + "  Has used the forum command");
-    }
+		totalCommands++;
+		}
 	if (msg.content.startsWith("twitter")){
     	bot.sendMessage(msg, "Our twitter is www.twitter.com/pa_organization - or @pa_organization" +msg.author);
     	console.log(msg.author.username + " Has used the twitter command. ");
-    }
+		totalCommands++;
+		}
 	
-	
+	if (msg.content.startsWith("command-count")){
+		bot.sendMessage(msg, "The total amount of commands used is..." +totalCommands);
+		
+	}
 	// Support Section End
 	
 	// !Quit command that makes the bot leave
