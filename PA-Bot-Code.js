@@ -1,6 +1,6 @@
 /*
     Perfect Alliance eSports Custom Discord  Bot
-	Version 0.0.9
+	Version 0.0.9A
 	Coded with love and memes by: Mike Madden
 	
 	Please visit www.paesports.com with any errors or problems with this bot.
@@ -12,10 +12,11 @@
 	Changelog 
 	8-26
 	[ADDED] AFK Mode - People type AFK, and are moved to the channel
-	[ADDED] Improved Console Logging
+	[ADDED] Improved Console Logging for  everything
 	[ADDED] a beta version of a support system.
 	[ADDED] command-count Will count all the commands used.
 	[ADDED] If you use a specific support command before you ask for help, a message will prompt you with further instructions. 
+	[ADDED]  An easter that will scare you, only if you find it.
 	
  	
 */
@@ -218,6 +219,16 @@ bot.on("message", msg => {
 		
 	}
 	// Support Section End
+	
+	
+	// Easter egg section
+	if (msg.content.startsWith("ghost"))
+	{
+		bot.replyTTS(msg, "Ghosts are fake, never believe in them. Never Believe in ghosts. Never Believe in ghosts. Never Believe in ghosts.", {tts:true});
+		
+		console.log(msg.author + "  has just shit there pants from a prank performed by me, the best bot ever.");
+	}
+	
 	
 	// !Quit command that makes the bot leave
 if (msg.content.startsWith("!quit")){
