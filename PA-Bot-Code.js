@@ -111,7 +111,8 @@ bot.on("message", msg => {
 		// Update the boolean so the system knows that it was asked for help
 		askHelp = true;
 		
-    	bot.sendMessage(msg, "What is it that you need help with? \n You can either say 'match report' 'account issue' 'vip' or 'other' " +msg.author);
+    	bot.sendMessage(msg, "What is it that you need help with? \n You can either say 'match report' 'account issue' 'vip' or 'other' \n I've also moved you to  " +msg.author);
+		bot.moveMember(msg.author, "153991121960173570");
 	
     	// Log it in the console
     	console.log(msg.author.username + " Has said that they need help");
@@ -243,14 +244,20 @@ if (msg.content.startsWith("afk")){
 	
 	// Actually move the person
 	bot.moveMember(msg.author, "140187524428464129");
-	
-	// Mute the person
-	//bot.muteMember(msg.author, "78907822976274432");	
+	console.log(msg.author.username + " Is now AFK, and has been moved to the AFK Channel.");
+	bot.sendMessage(msg, msg.author + " Is now AFK.");
+	bot.sendMessage(msg.author, "You are now AFK, I've also moved you to the AFK Channel.")
+}
+if (msg.content.startsWith("lobby")){
+	// Actually move the person
+	bot.moveMember(msg.author, "78907875346354176");		
+	console.log(msg.author.username + " Was moved to the lobby")
 }
 });
 
 
-
+// Mute the person
+	//bot.muteMember(msg.author, "78907822976274432");	
 
 // Leave this - auth everything with discord
 bot.loginWithToken(AuthDetails.token);
