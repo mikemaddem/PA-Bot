@@ -1,6 +1,6 @@
 /*
     Perfect Alliance eSports Custom Discord  Bot
-	Version 0.0.9A
+	Version 0.1.0
 	Coded with love and memes by: Mike Madden
 	
 	Please visit www.paesports.com with any errors or problems with this bot.
@@ -17,6 +17,8 @@
 	[ADDED] command-count Will count all the commands used.
 	[ADDED] If you use a specific support command before you ask for help, a message will prompt you with further instructions. 
 	[ADDED]  An easter that will scare you, only if you find it.
+	[ADDED] Going AFK, will now send a server message, and will send you a DM confirming.
+	[ADDED] 'lobby' Will move you to the lobby.
 	
  	
 */
@@ -31,6 +33,10 @@ var bot = new Discord.Client();
 var totalCommands;
 
 totalCommands=0;
+
+var tenCommands;
+
+tenCommands=false;
 
 var askHelp = false;
 
@@ -226,11 +232,17 @@ bot.on("message", msg => {
 	if (msg.content.startsWith("ghost"))
 	{
 		bot.replyTTS(msg, "Ghosts are fake, never believe in them. Never Believe in ghosts. Never Believe in ghosts. Never Believe in ghosts.", {tts:true});
-		
 		console.log(msg.author + "  has just shit there pants from a prank performed by me, the best bot ever.");
+		totalCommands++;
 	}
 	
-	
+	if (totalCommands == 10 && tenCommands==false){
+		tenCommands=true
+		bot.sendMessage(msg, "Hey, stop it.:expressionless:  \n STOP IT NOW! :rage:  \n You are making me work too hard! :tired_face: ")
+		console.log("I have answered 10 commands -  give me a raise b0ss")
+	}
+
+
 	// !Quit command that makes the bot leave
 if (msg.content.startsWith("!quit")){
 	bot.sendMessage(msg, "I guess nobody wants me here anymore");
