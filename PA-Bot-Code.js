@@ -117,7 +117,7 @@ bot.on("message", msg => {
 		// Update the boolean so the system knows that it was asked for help
 		askHelp = true;
 		
-    	bot.sendMessage(msg, "What is it that you need help with? \n You can either say 'match report' 'account issue' 'vip' or 'other' \n I've also moved you to  " +msg.author);
+    	bot.sendMessage(msg, "What is it that you need help with? \n You can either say 'match report' 'account issue' 'vip' or 'other' \n I've also moved you to our support channel.  " +msg.author);
 		bot.moveMember(msg.author, "153991121960173570");
 	
     	// Log it in the console
@@ -187,7 +187,7 @@ bot.on("message", msg => {
 		totalCommands++;
 		}
 	if (msg.content.startsWith("csgo")){
-    	bot.sendMessage(msg, " :warning: CS:GO events are currently on-hold /n We are however working on something awesome for the CS scene ready around early October /n :sunglasses: " +msg.author);
+    	bot.sendMessage(msg, " :warning: CS:GO events are currently on-hold /n We are however working on something awesome for the CS scene ready around early October \n :sunglasses: " +msg.author);
     	console.log(msg.author.username + "  Has used the CS:GO command");
 		totalCommands++;
 		}
@@ -264,7 +264,9 @@ if (msg.content.startsWith("lobby")){
 	// Actually move the person
 	bot.moveMember(msg.author, "78907875346354176");		
 	console.log(msg.author.username + " Was moved to the lobby")
+	bot.sendMessage(msg.author, "I've moved you to the lobby. :wink:")
 }
+
 });
 
 
