@@ -36,9 +36,19 @@ totalCommands=0;
 
 var tenCommands;
 
+var mmLine;
+
+mmLine=0;
+
+var match1Ready;
+
+match1Ready=false;
+
 tenCommands=false;
 
 var askHelp = false;
+
+var players = ["person1", "person2", "person3", "person4"];
 
 //var adminrole = msg.server.roles.get("name", "Admin");
 
@@ -236,6 +246,8 @@ bot.on("message", msg => {
 		totalCommands++;
 	}
 	
+	// End of easter egg section
+
 	if (totalCommands == 10 && tenCommands==false){
 		tenCommands=true
 		bot.sendMessage(msg, "Hey, stop it.:expressionless:  \n STOP IT NOW! :rage:  \n You are making me work too hard! :tired_face: ")
@@ -258,14 +270,44 @@ if (msg.content.startsWith("afk")){
 	bot.moveMember(msg.author, "140187524428464129");
 	console.log(msg.author.username + " Is now AFK, and has been moved to the AFK Channel.");
 	bot.sendMessage(msg, msg.author + " Is now AFK.");
-	bot.sendMessage(msg.author, "You are now AFK, I've also moved you to the AFK Channel.")
+	bot.sendMessage(msg.author, "You are now AFK, I've also moved you to the AFK Channel.");
 }
 if (msg.content.startsWith("lobby")){
 	// Actually move the person
 	bot.moveMember(msg.author, "78907875346354176");		
-	console.log(msg.author.username + " Was moved to the lobby")
-	bot.sendMessage(msg.author, "I've moved you to the lobby. :wink:")
+	console.log(msg.author.username + " Was moved to the lobby");
+	bot.sendMessage(msg.author, "I've moved you to the lobby. :wink:");
 }
+
+// Matchmaking 0.1
+
+if (msg.content.startsWith("join-q")){
+	// Actually move the person
+	bot.moveMember(msg.author, "218896743671005184");		
+	console.log(msg.author.username + " Was moved to the Matchmaking queue");		// Direct Message
+	mmLine++;
+	bot.sendMessage(msg, msg.author + "You've been moved into the Matchmaking queue. Please note this is a alpha version, there will be bugs, and glitches. ");		// Server wide message
+	bot.sendMessage(msg, msg.author + " has joined the matchmaking queue. \n There are a total of " +mmLine + " in line");		// Server wide message
+	if (mmLine==4){
+		bot.sendMessage(msg, msg.author + "There are 4 people that are ready to play a match. Server info will be sent soon.");
+
+		console.log("4 People have been choosen for this upcoming match.");
+	}
+	/*while (mmLine<4){
+		match1Ready=false
+	}
+	for
+		*/
+}
+	if (msg.content.startsWith("leave-q")){
+		bot.sendMessage(msg, msg.author + " has left the matchmaking queue. Current number of people in queue = "+mmLine);
+		bot.sendMessage(msg.author, "You've left the matchmaking queue, please type 'join-q' when you are ready to join again.")
+		console.log(msg.author.username + " Has left the matchmaking queue. Current people in queue = " +mmLine);
+		mmLine--;
+	}
+	if (msg.content.startsWith("q-status")){
+		bot.sendMessage(msg, "There are " +mmLine, "people in queue")		// Simple command that prints the current value of the var storing the people in q.
+	}
 
 });
 
